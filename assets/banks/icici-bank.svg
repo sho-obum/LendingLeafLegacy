@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="240" height="100">
+  <rect width="240" height="100" fill="#ffffff"/>
+  <rect x="40" y="35" width="20" height="30" fill="#f58220"/>
+  <rect x="70" y="35" width="20" height="30" fill="#ed1c24"/>
+  <rect x="100" y="35" width="20" height="30" fill="#f58220"/>
+  <text x="150" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#012d74">ICICI Bank</text>
+</svg>

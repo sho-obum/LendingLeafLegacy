@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 100" width="240" height="100">
+  <rect width="240" height="100" fill="#ffffff"/>
+  <circle cx="60" cy="50" r="25" fill="#2b5aaa"/>
+  <path d="M60,30L80,50L60,70L40,50L60,30z" fill="#ffffff"/>
+  <text x="150" y="60" text-anchor="middle" font-family="Arial, sans-serif" font-size="24" font-weight="bold" fill="#2b5aaa">State Bank</text>
+</svg>
