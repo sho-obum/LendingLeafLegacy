@@ -9,6 +9,17 @@
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        input.error,
+        select.error {
+            border: 1px solid #e53935;
+        }
+
+        .error-msg {
+            color: #e53935;
+            font-size: 0.8rem;
+            margin-top: 4px;
+        }
+
         .bank-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
@@ -71,8 +82,12 @@
             margin-top: 10px;
         }
     </style>
-    <script src="https://my.rtmark.net/p.js?f=sync&lr=1&partner=2e7f5d96134b5c2e35715c316954f73c6c302da95228645da8c53ea8d0602ac8" defer></script>
-    <noscript><img src="https://my.rtmark.net/img.gif?f=sync&lr=1&partner=2e7f5d96134b5c2e35715c316954f73c6c302da95228645da8c53ea8d0602ac8" width="1" height="1" /></noscript>
+    <script
+        src="https://my.rtmark.net/p.js?f=sync&lr=1&partner=2e7f5d96134b5c2e35715c316954f73c6c302da95228645da8c53ea8d0602ac8"
+        defer></script>
+    <noscript><img
+            src="https://my.rtmark.net/img.gif?f=sync&lr=1&partner=2e7f5d96134b5c2e35715c316954f73c6c302da95228645da8c53ea8d0602ac8"
+            width="1" height="1" /></noscript>
 </head>
 
 <body>
@@ -87,7 +102,7 @@
                                 <path d="M20,15 Q40,5 60,15 T100,15" fill="none" stroke="#2E7D32" stroke-width="3" />
                                 <text x="40" y="40" fill="#2E7D32" font-size="20" font-weight="bold">LendingLeaf</text>
                             </svg> -->
-                        <img src="/LogoLL.png" alt="LendingLeaf" srcset="" style="width: 140px;">
+                            <img src="/LogoLL.png" alt="LendingLeaf" srcset="" style="width: 140px;">
 
                         </a>
                     </div>
@@ -178,61 +193,81 @@
                         </div>
 
                         <!-- Error Message Display -->
-                        <div class="error-message" id="error-message"></div>
+                        <!-- <div class="error-message" id="error-message"></div> -->
 
                         <!-- Form Steps -->
                         <div class="form-steps-container">
                             <!-- Step 1: Personal Information -->
                             <div class="form-step" id="step-1">
                                 <h2>Personal Information</h2>
-                                <form id="personal-info-form" >
-                                <input type="hidden" name="utm_source" id="utm_source" value="<?= isset($_GET['utm_source']) ? $_GET['utm_source'] : '' ?>">
-                                <input type="hidden" name="uniqueVal" id="uniqueVal" value="<?= isset($_GET['uniqueVal']) ? $_GET['uniqueVal'] : '' ?>">
-                                <input type="hidden" name="utm_medium" id="utm_medium" value="<?= isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '' ?>">
-                                <input type="hidden" name="utm_campaign" id="utm_campaign" value="<?= isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '' ?>">
-                                <input type="hidden" name="utm_content" id="utm_content" value="<?= isset($_GET['utm_content']) ? $_GET['utm_content'] : '' ?>">
+                                <form id="personal-info-form">
+                                    <input type="hidden" name="utm_source" id="utm_source"
+                                        value="<?= isset($_GET['utm_source']) ? $_GET['utm_source'] : '' ?>">
+                                    <input type="hidden" name="uniqueVal" id="uniqueVal"
+                                        value="<?= isset($_GET['uniqueVal']) ? $_GET['uniqueVal'] : '' ?>">
+                                    <input type="hidden" name="utm_medium" id="utm_medium"
+                                        value="<?= isset($_GET['utm_medium']) ? $_GET['utm_medium'] : '' ?>">
+                                    <input type="hidden" name="utm_campaign" id="utm_campaign"
+                                        value="<?= isset($_GET['utm_campaign']) ? $_GET['utm_campaign'] : '' ?>">
+                                    <input type="hidden" name="utm_content" id="utm_content"
+                                        value="<?= isset($_GET['utm_content']) ? $_GET['utm_content'] : '' ?>">
                                     <div class="form-grid">
                                         <div class="form-group">
                                             <label for="fullName">Full Name</label>
                                             <input type="text" id="fullName" name="fullName"
                                                 placeholder="Enter your name">
+                                            <div class="error-text"></div>
+
                                         </div>
 
                                         <div class="form-group">
                                             <label for="mobileNumber">Mobile Number</label>
                                             <input type="tel" id="mobileNumber" name="mobileNumber"
                                                 placeholder="Enter your 10-digit mobile number" maxlength="10">
+                                            <div class="error-text"></div>
+
                                         </div>
 
                                         <div class="form-group">
                                             <label for="email">Email</label>
                                             <input type="email" id="email" name="email" placeholder="Enter your email">
+                                            <div class="error-text"></div>
+
                                         </div>
 
                                         <div class="form-group">
                                             <label for="dateOfBirth">Date of Birth</label>
-                                            <input type="date" id="dateOfBirth" name="dateOfBirth" >
+                                            <input type="date" id="dateOfBirth" name="dateOfBirth">
+                                            <div class="error-text"></div>
+
                                         </div>
 
                                         <div class="form-group">
                                             <label for="reqdloanAmount">Required Loan Amount</label>
                                             <input type="number" id="reqdloanAmount" name="reqdloanAmount"
                                                 placeholder="Enter loan amount">
+                                            <div class="error-text"></div>
+
                                         </div>
                                         <div class="form-group">
                                             <label for="typeOfLoan">Loan Type</label>
-                                            <select id="loanType" class="form-select" name="typeOfLoan" id="typeOfLoan" required="">
+                                            <select id="loanType" class="form-select" name="typeOfLoan" 
+                                                required="">
                                                 <option value="" disabled="" selected="">Select Loan Type</option>
                                                 <option value="HL-Fresh">Home Loan</option>
                                                 <option value="HL-BT">Home Loan Balance Transfer</option>
                                                 <option value="HL-BT-TopUp">Home Loan Balance Transfer + Top-up</option>
                                             </select>
+                                            <div class="error-text"></div>
+
                                         </div>
 
                                         <div class="form-group">
                                             <label for="residencePincode">Residence Pincode</label>
                                             <input type="text" id="residencePincode" name="residencePincode"
                                                 placeholder="Enter your 6-digit pincode" maxlength="6">
+                                            <div class="error-text"></div>
+
                                         </div>
                                     </div>
                             </div>
@@ -302,24 +337,32 @@
                                                 <label for="netMonthlyIncome">Net Monthly Income</label>
                                                 <input type="number" id="netMonthlyIncome" name="netMonthlyIncome"
                                                     placeholder="Enter your monthly income">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="currentEmployer">Current Employer</label>
                                                 <input type="text" id="currentEmployer" name="currentEmployer"
                                                     placeholder="Enter your employer name">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="workEmail">Work Email</label>
                                                 <input type="email" id="workEmail" name="workEmail"
                                                     placeholder="Enter your work email">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="yearsOfExperience">Years of Experience</label>
                                                 <input type="number" id="yearsOfExperience" name="yearsOfExperience"
                                                     placeholder="Enter total years of experience">
+                                                <div class="error-text"></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -334,24 +377,32 @@
                                                 <label for="annualTurnover">Annual Turnover</label>
                                                 <input type="number" id="annualTurnover" name="annualTurnover"
                                                     placeholder="Enter annual turnover">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="businessType">Business Type</label>
                                                 <input type="text" id="businessType" name="businessType"
                                                     placeholder="Enter type of business">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="businessPincode">Business Pincode</label>
                                                 <input type="text" id="businessPincode" name="businessPincode"
                                                     placeholder="Enter business pincode" maxlength="6">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="yearsInBusiness">Years in Business</label>
                                                 <input type="number" id="yearsInBusiness" name="yearsInBusiness"
                                                     placeholder="Enter years in business">
+                                                <div class="error-text"></div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -366,30 +417,38 @@
                                                 <label for="annualReceipts">Annual Receipts</label>
                                                 <input type="number" id="annualReceipts" name="annualReceipts"
                                                     placeholder="Enter annual receipts">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="profession">Profession</label>
                                                 <input type="text" id="profession" name="profession"
                                                     placeholder="Enter your profession">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="officePincode">Office Pincode</label>
                                                 <input type="text" id="officePincode" name="officePincode"
                                                     placeholder="Enter office pincode" maxlength="6">
+                                                <div class="error-text"></div>
+
                                             </div>
 
                                             <div class="form-group">
                                                 <label for="yearsOfPractice">Years of Practice</label>
                                                 <input type="number" id="yearsOfPractice" name="yearsOfPractice"
                                                     placeholder="Enter years of practice">
+                                                <div class="error-text"></div>
+
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            </form>
+
 
                             <!-- Step 5: Terms and Conditions -->
                             <div class="form-step hidden" id="step-5">
@@ -409,7 +468,7 @@
                                     </div>
                                 </div>
                             </div>
-
+                            </form>
                             <!-- Thank You Screen -->
                             <div class="form-step hidden" id="thank-you">
                                 <div class="thank-you-content">
@@ -482,7 +541,8 @@
                                                     <img src="https://pixelpod.in/admin/uploads/2491743153450.jpg"
                                                         alt="Not Eligible" class="overlay-image">
                                                 </div>
-                                                <img src="https://pixelpod.in/admin/uploads/icici1743060843.png" alt="ICICI Bank">
+                                                <img src="https://pixelpod.in/admin/uploads/icici1743060843.png"
+                                                    alt="ICICI Bank">
                                                 <h4>ICICI Bank</h4>
                                             </div>
 
@@ -510,8 +570,11 @@
                                         class="fas fa-arrow-left"></i> Back</button>
                                 <button type="button" id="next-button" class="btn btn-primary">Next <i
                                         class="fas fa-arrow-right"></i></button>
-                                <button type="button" id="submit-button" class="btn btn-primary hidden" disabled>Submit
-                                    Application</button>
+                                <button type="button" id="submit-button" class="btn btn-primary hidden" disabled>
+                                    Submit Application
+                                </button>
+
+
                             </div>
                         </div>
                     </div>
@@ -567,129 +630,6 @@
         </footer>
         <!-- jQuery CDN (latest version) -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-
-        <script>
-            // Form Navigation and Validation Script
-            document.addEventListener('DOMContentLoaded', () => {
-                const steps = document.querySelectorAll('.form-step');
-                const stepIndicators = document.querySelectorAll('.step');
-                const prevButton = document.getElementById('prev-button');
-                const nextButton = document.getElementById('next-button');
-                const submitButton = document.getElementById('submit-button');
-                const termsCheckbox = document.getElementById('terms-checkbox');
-
-                let currentStep = 1;
-                const totalSteps = steps.length - 1; // Excluding thank you screen
-
-                // Disable submit button initially
-                submitButton.disabled = true;
-
-                function updateFormDisplay() {
-                    steps.forEach(step => step.classList.add('hidden'));
-                    stepIndicators.forEach(indicator => indicator.classList.remove('active'));
-
-                    document.getElementById(`step-${currentStep}`).classList.remove('hidden');
-                    document.querySelector(`.step[data-step="${currentStep}"]`).classList.add('active');
-
-                    const progress = document.getElementById('form-progress');
-                    progress.style.width = `${((currentStep - 1) / (totalSteps - 1)) * 100}%`;
-
-                    prevButton.style.display = currentStep > 1 ? 'inline-block' : 'none';
-
-                    if (currentStep === totalSteps) {
-                        nextButton.classList.add('hidden');
-                        submitButton.classList.remove('hidden');
-                    } else {
-                        nextButton.classList.remove('hidden');
-                        submitButton.classList.add('hidden');
-                    }
-                }
-
-                function validateCurrentStep() {
-                    const currentStepElement = document.getElementById(`step-${currentStep}`);
-                    const inputs = currentStepElement.querySelectorAll('input, select');
-                    let isValid = true;
-
-                    inputs.forEach(input => {
-                        if (input.hasAttribute('required') && !input.value.trim()) {
-                            isValid = false;
-                            input.classList.add('error');
-                        } else {
-                            input.classList.remove('error');
-                        }
-                    });
-
-                    return isValid;
-                }
-
-                nextButton.addEventListener('click', () => {
-                    if (validateCurrentStep()) {
-                        if (currentStep < totalSteps) {
-                            currentStep++;
-                            updateFormDisplay();
-                        }
-                    } else {
-                        alert('Please fill in all required fields.');
-                    }
-                });
-
-                prevButton.addEventListener('click', () => {
-                    if (currentStep > 1) {
-                        currentStep--;
-                        updateFormDisplay();
-                    }
-                });
-
-                // Enable/disable submit button based on checkbox state
-                termsCheckbox.addEventListener('change', () => {
-                    submitButton.disabled = !termsCheckbox.checked;
-                });
-
-                submitButton.addEventListener('click', () => {
-                    if (termsCheckbox.checked) {
-                        document.getElementById(`step-${currentStep}`).classList.add('hidden');
-
-                        const applicationNumber = `LF-${new Date().getFullYear()}-${Math.floor(Math.random() * 9000) + 1000}`;
-                        document.getElementById('application-number').textContent = applicationNumber;
-
-                        var formData = $("#personal-info-form").serializeArray(); 
-                        var dataObj = {};
-
-                        // Convert the array into an object
-                        $.each(formData, function(i, field) {
-                            dataObj[field.name] = field.value;
-                        });
-                        dataObj['employmentType'] = $("#step-3 .selection-options  .selected").attr('data-value');
-                        dataObj['propertyType'] = $("#step-2 .selection-options  .selected").attr('data-value');
-                        dataObj['applicationNumber'] = applicationNumber;
-                        // Convert the object to JSON
-                        const jsonData = JSON.stringify(dataObj);
-                        console.log(jsonData);
-                        $.ajax({
-                            url: 'ajax.php',
-                            method: 'POST',
-                            dataType:'JSON',
-                            data :dataObj,
-                            success: function(response) {
-                                console.log('Data:', response);
-                                if(response.success){
-                                    document.getElementById('thank-you').classList.remove('hidden');
-                                }else{
-
-                                }
-                            },
-                            error: function(err) {
-                                console.error('Error:', err);
-                            }
-                        });
-                    }
-                });
-
-                updateFormDisplay();
-            });
-        </script>
-
-
         <script src="js/validation.js"></script>
         <script src="js/form.js"></script>
         <script src="js/main.js"></script>
