@@ -48,10 +48,16 @@ document.addEventListener("DOMContentLoaded", function () {
         (today.getMonth() === date.getMonth() && today.getDate() >= date.getDate());
       const realAge = isBirthdayPassed ? age : age - 1;
       return realAge >= 18 ? true : "You need to be at least 18 to adult your way into a loan.";
+    },typeOfLoan: () => {
+      const selected = document.querySelector('input[name="typeOfLoan"]:checked');
+      return selected ? true : "Select a loan type to continue.";
     },
     reqdloanAmount: (val, field) => {
       const raw = field.dataset.raw || val.replace(/,/g, '');
-      return parseInt(raw) >= 100000 || "That’s too little. We only deal in serious dreams (₹1L+).";
+      const num = parseInt(raw);
+      if (num < 100000) return "That’s too little. We only deal in serious dreams (₹1L+).";
+      if (num > 100000000) return "That's too ambitious. Let's cap it at ₹10 Cr.";
+      return true;
     },
     residencePincode: (val) => /^\d{6}$/.test(val) || "6 digits only! Let’s not confuse your address.",
     netMonthlyIncome: (val, field) => {
@@ -98,16 +104,16 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
   const yearFields = ["yearsOfExperience", "yearsInBusiness", "yearsOfPractice"];
-yearFields.forEach((id) => {
-  const field = document.getElementById(id);
-  if (!field) return;
+  yearFields.forEach((id) => {
+    const field = document.getElementById(id);
+    if (!field) return;
 
-  field.setAttribute("maxlength", "2");
+    field.setAttribute("maxlength", "2");
 
-  field.addEventListener("input", function () {
-    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 2);
+    field.addEventListener("input", function () {
+      this.value = this.value.replace(/[^0-9]/g, "").slice(0, 2);
+    });
   });
-});
 
 
   const inrFields = ["reqdloanAmount", "netMonthlyIncome", "annualTurnover", "annualReceipts"];

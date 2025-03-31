@@ -118,6 +118,57 @@
             font-weight: bold;
             margin-top: 10px;
         }
+
+        .radio-wrapper {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+            margin-top: 10px;
+        }
+
+        .radio-option {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            padding: 10px 16px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: 0.3s;
+            background-color: #fff;
+            flex: 1 1 calc(33.33% - 12px);
+            box-sizing: border-box;
+            min-width: 220px;
+        }
+
+        .radio-option:hover {
+            border-color: #2e7d32;
+        }
+
+        .radio-option input[type="radio"] {
+            accent-color: #2e7d32;
+            margin-right: 10px;
+            width: 16px;
+            height: 16px;
+        }
+
+        .radio-option label {
+            font-size: 0.95rem;
+            cursor: pointer;
+            user-select: none;
+            white-space: nowrap;
+        }
+
+        .radio-option.selected {
+            border-color: #2e7d32;
+            background-color: #e8f5e9;
+        }
+
+        @media (max-width: 768px) {
+            .radio-option {
+                flex: 1 1 100%;
+            }
+        }
     </style>
     <script
         src="https://my.rtmark.net/p.js?f=sync&lr=1&partner=2e7f5d96134b5c2e35715c316954f73c6c302da95228645da8c53ea8d0602ac8"
@@ -288,17 +339,8 @@
                                             <div class="error-text"></div>
 
                                         </div>
-                                        <div class="form-group">
-                                            <label for="typeOfLoan">Loan Type</label>
-                                            <select id="loanType" class="form-select" name="typeOfLoan" required="">
-                                                <option value="" disabled="" selected="">Select Loan Type</option>
-                                                <option value="HL-Fresh">Home Loan</option>
-                                                <option value="HL-BT">Home Loan Balance Transfer</option>
-                                                <option value="HL-BT-TopUp">Home Loan Balance Transfer + Top-up</option>
-                                            </select>
-                                            <div class="error-text"></div>
 
-                                        </div>
+
 
                                         <div class="form-group">
                                             <label for="residencePincode">Residence Pincode</label>
@@ -306,6 +348,24 @@
                                                 placeholder="Enter your 6-digit pincode" maxlength="6">
                                             <div class="error-text"></div>
 
+                                        </div>
+                                        <div class="form-group full-width">
+                                            <label>Loan Type</label>
+                                            <div class="loan-type-options radio-wrapper">
+                                                <label class="radio-option">
+                                                    <input type="radio" name="typeOfLoan" value="HL-Fresh" />
+                                                    <span>Home Loan</span>
+                                                </label>
+                                                <label class="radio-option">
+                                                    <input type="radio" name="typeOfLoan" value="HL-BT" />
+                                                    <span>Home Loan Balance Transfer</span>
+                                                </label>
+                                                <label class="radio-option">
+                                                    <input type="radio" name="typeOfLoan" value="HL-BT-TopUp" />
+                                                    <span>Home Loan Balance Transfer + Top-up</span>
+                                                </label>
+                                            </div>
+                                            <div class="error-text"></div>
                                         </div>
                                     </div>
                             </div>

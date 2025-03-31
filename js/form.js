@@ -347,6 +347,12 @@ document.addEventListener("DOMContentLoaded", function () {
         scrollToFirstError();
         return false;
       }
+      const loanType = document.querySelector('input[name="typeOfLoan"]:checked');
+      if (!loanType) {
+        showErrorMessage("Please select a loan type");
+        scrollToFirstError();
+        return false;
+      }
     } else if (step === 2) {
       // Property Type Validation
       if (!propertyType) {
@@ -433,7 +439,8 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.mobileNumber = document.getElementById("mobileNumber")?.value;
       formData.email = document.getElementById("email")?.value;
       formData.dateOfBirth = document.getElementById("dateOfBirth")?.value;
-      formData.typeOfLoan = document.getElementById("loanType")?.value;
+      const selectedLoanType = document.querySelector('input[name="typeOfLoan"]:checked');
+      formData.typeOfLoan = selectedLoanType ? selectedLoanType.value : "";
       formData.reqdloanAmount = document.getElementById("reqdloanAmount")?.getAttribute("data-raw");
       // formData.netMonthlyIncome = document.getElementById("netMonthlyIncome")?.getAttribute("data-raw");
       // formData.annualTurnover = document.getElementById("annualTurnover")?.getAttribute("data-raw");
