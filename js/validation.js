@@ -88,6 +88,28 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   window.scrollToFirstError = scrollToFirstError;
 
+  const textOnlyFields = ["profession", "businessType", "currentEmployer"];
+  textOnlyFields.forEach((id) => {
+    const field = document.getElementById(id);
+    if (!field) return;
+    field.addEventListener("keypress", function (e) {
+      if (/\d/.test(e.key)) e.preventDefault(); // Block numbers
+    });
+  });
+
+  const yearFields = ["yearsOfExperience", "yearsInBusiness", "yearsOfPractice"];
+yearFields.forEach((id) => {
+  const field = document.getElementById(id);
+  if (!field) return;
+
+  field.setAttribute("maxlength", "2");
+
+  field.addEventListener("input", function () {
+    this.value = this.value.replace(/[^0-9]/g, "").slice(0, 2);
+  });
+});
+
+
   const inrFields = ["reqdloanAmount", "netMonthlyIncome", "annualTurnover", "annualReceipts"];
   inrFields.forEach((id) => {
     const field = document.getElementById(id);

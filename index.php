@@ -1,13 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LendingLeaf - Home Loans and Financial Services</title>
     <link rel="stylesheet" href="css/styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+    <style>
+      
+
+        .btn-primary:hover {
+            color: white;
+        }
+    </style>
 </head>
+
 <body>
     <header>
         <div class="container">
@@ -15,12 +25,12 @@
                 <div class="logo">
                     <a href="index.php">
                         <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-                            <path d="M20,15 Q40,5 60,15 T100,15" fill="none" stroke="#2E7D32" stroke-width="3"/>
+                            <path d="M20,15 Q40,5 60,15 T100,15" fill="none" stroke="#2E7D32" stroke-width="3" />
                             <text x="40" y="40" fill="#2E7D32" font-size="20" font-weight="bold">LendingLeaf</text>
                         </svg>
                     </a>
                 </div>
-                
+
                 <div class="menu-toggle">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -104,21 +114,22 @@
             <div class="container">
                 <h2>EMI Calculator</h2>
                 <p>Calculate your monthly EMI based on loan amount, interest rate, and tenure.</p>
-                
+
                 <div class="calculator-container">
                     <div class="calculator-form">
                         <div class="form-group">
                             <label for="loan-amount">Loan Amount (₹)</label>
                             <input type="number" id="loan-amount" min="100000" max="10000000" value="2000000">
                             <div class="range-slider">
-                                <input type="range" id="loan-amount-slider" min="100000" max="10000000" step="100000" value="2000000">
+                                <input type="range" id="loan-amount-slider" min="100000" max="10000000" step="100000"
+                                    value="2000000">
                                 <div class="range-labels">
                                     <span>1L</span>
                                     <span>1Cr</span>
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="interest-rate">Interest Rate (% p.a.)</label>
                             <input type="number" id="interest-rate" min="5" max="20" step="0.1" value="8.5">
@@ -130,7 +141,7 @@
                                 </div>
                             </div>
                         </div>
-                        
+
                         <div class="form-group">
                             <label for="loan-tenure">Loan Tenure (Years)</label>
                             <input type="number" id="loan-tenure" min="1" max="30" value="20">
@@ -143,13 +154,13 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="calculator-result">
                         <div class="result-card">
                             <h3>Monthly EMI</h3>
                             <p class="emi-amount">₹ <span id="emi-result">17,416</span></p>
                         </div>
-                        
+
                         <div class="result-details">
                             <div class="result-item">
                                 <span>Principal</span>
@@ -164,7 +175,7 @@
                                 <strong>₹ <span id="total-amount">41,79,777</span></strong>
                             </div>
                         </div>
-                        
+
                         <a href="homeloan.php" class="btn btn-secondary">Apply for Home Loan</a>
                     </div>
                 </div>
@@ -177,12 +188,12 @@
             <div class="footer-grid">
                 <div class="footer-logo">
                     <svg class="logo-svg" viewBox="0 0 200 60" xmlns="http://www.w3.org/2000/svg">
-                        <path d="M20,15 Q40,5 60,15 T100,15" fill="none" stroke="#FFFFFF" stroke-width="3"/>
+                        <path d="M20,15 Q40,5 60,15 T100,15" fill="none" stroke="#FFFFFF" stroke-width="3" />
                         <text x="40" y="40" fill="#FFFFFF" font-size="20" font-weight="bold">LendingLeaf</text>
                     </svg>
                     <p>Rooting your dreams, branching your future</p>
                 </div>
-                
+
                 <div class="footer-links">
                     <h4>Quick Links</h4>
                     <ul>
@@ -192,7 +203,7 @@
                         <li><a href="#">Car Loan</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-links">
                     <h4>Insurance</h4>
                     <ul>
@@ -200,7 +211,7 @@
                         <li><a href="#">Life Insurance</a></li>
                     </ul>
                 </div>
-                
+
                 <div class="footer-contact">
                     <h4>Contact Us</h4>
                     <p><i class="fas fa-phone"></i> 1800-123-4567</p>
@@ -213,7 +224,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="footer-bottom">
                 <p>&copy; 2023 LendingLeaf. All rights reserved.</p>
             </div>
@@ -223,4 +234,5 @@
     <script src="js/main.js"></script>
     <script src="js/calculator.js"></script>
 </body>
+
 </html>
