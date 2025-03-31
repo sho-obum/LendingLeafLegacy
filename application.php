@@ -244,15 +244,16 @@
 
                                         <div class="form-group">
                                             <label for="reqdloanAmount">Required Loan Amount</label>
-                                            <input type="number" id="reqdloanAmount" name="reqdloanAmount"
+
+                                            <input type="text" id="reqdloanAmount" name="reqdloanAmount" data-inr="true"
                                                 placeholder="Enter loan amount">
+
                                             <div class="error-text"></div>
 
                                         </div>
                                         <div class="form-group">
                                             <label for="typeOfLoan">Loan Type</label>
-                                            <select id="loanType" class="form-select" name="typeOfLoan" 
-                                                required="">
+                                            <select id="loanType" class="form-select" name="typeOfLoan" required="">
                                                 <option value="" disabled="" selected="">Select Loan Type</option>
                                                 <option value="HL-Fresh">Home Loan</option>
                                                 <option value="HL-BT">Home Loan Balance Transfer</option>
@@ -335,8 +336,7 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="netMonthlyIncome">Net Monthly Income</label>
-                                                <input type="number" id="netMonthlyIncome" name="netMonthlyIncome"
-                                                    placeholder="Enter your monthly income">
+                                                <input type="text" id="netMonthlyIncome" name="netMonthlyIncome" data-inr="true" placeholder="Enter monthly income">
                                                 <div class="error-text"></div>
 
                                             </div>
@@ -375,8 +375,7 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="annualTurnover">Annual Turnover</label>
-                                                <input type="number" id="annualTurnover" name="annualTurnover"
-                                                    placeholder="Enter annual turnover">
+                                                <input type="text" id="annualTurnover" name="annualTurnover" data-inr="true" placeholder="Enter annual turnover">
                                                 <div class="error-text"></div>
 
                                             </div>
@@ -415,8 +414,7 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="annualReceipts">Annual Receipts</label>
-                                                <input type="number" id="annualReceipts" name="annualReceipts"
-                                                    placeholder="Enter annual receipts">
+                                                <input type="text" id="annualReceipts" name="annualReceipts" data-inr="true" placeholder="Enter annual receipts">
                                                 <div class="error-text"></div>
 
                                             </div>

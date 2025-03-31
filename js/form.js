@@ -402,8 +402,12 @@ document.addEventListener("DOMContentLoaded", function () {
       formData.email = document.getElementById("email")?.value;
       formData.dateOfBirth = document.getElementById("dateOfBirth")?.value;
       formData.typeOfLoan = document.getElementById("loanType")?.value;
-      formData.reqdloanAmount =
-        document.getElementById("reqdloanAmount")?.value;
+      formData.reqdloanAmount = document.getElementById("reqdloanAmount")?.getAttribute("data-raw");
+      // formData.netMonthlyIncome = document.getElementById("netMonthlyIncome")?.getAttribute("data-raw");
+      // formData.annualTurnover = document.getElementById("annualTurnover")?.getAttribute("data-raw");
+      // formData.annualReceipts = document.getElementById("annualReceipts")?.getAttribute("data-raw");
+
+
       formData.residencePincode =
         document.getElementById("residencePincode")?.value;
     } else if (currentStep === 2) {
@@ -415,8 +419,8 @@ document.addEventListener("DOMContentLoaded", function () {
     } else if (currentStep === 4) {
       // Employment Details based on type
       if (employmentType === "Salaried") {
-        formData.netMonthlyIncome =
-          document.getElementById("netMonthlyIncome")?.value;
+        formData.netMonthlyIncome = document.getElementById("netMonthlyIncome")?.dataset.raw || "";
+
         formData.currentEmployer =
           document.getElementById("currentEmployer")?.value;
         formData.workEmail = document.getElementById("workEmail")?.value;
@@ -526,39 +530,33 @@ document.addEventListener("DOMContentLoaded", function () {
             <h4>Personal Information</h4>
             <div class="summary-item">
                 <div class="summary-label">Name</div>
-                <div class="summary-value">${
-                  formData.fullName || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.fullName || "Not provided"
+      }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Mobile</div>
-                <div class="summary-value">${
-                  formData.mobileNumber || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.mobileNumber || "Not provided"
+      }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Email</div>
-                <div class="summary-value">${
-                  formData.email || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.email || "Not provided"
+      }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Date of Birth</div>
-                <div class="summary-value">${
-                  formData.dateOfBirth || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.dateOfBirth || "Not provided"
+      }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Loan Amount</div>
-                <div class="summary-value">₹ ${
-                  formData.reqdloanAmount || "Not provided"
-                }</div>
+                <div class="summary-value">₹ ${formData.reqdloanAmount || "Not provided"
+      }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Residence Pincode</div>
-                <div class="summary-value">${
-                  formData.residencePincode || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.residencePincode || "Not provided"
+      }</div>
             </div>
         </div>`;
 
@@ -567,9 +565,8 @@ document.addEventListener("DOMContentLoaded", function () {
             <h4>Property Information</h4>
             <div class="summary-item">
                 <div class="summary-label">Property Type</div>
-                <div class="summary-value">${
-                  formData.propertyType || "Not selected"
-                }</div>
+                <div class="summary-value">${formData.propertyType || "Not selected"
+      }</div>
             </div>
         </div>`;
 
@@ -578,68 +575,58 @@ document.addEventListener("DOMContentLoaded", function () {
             <h4>Employment Information</h4>
             <div class="summary-item">
                 <div class="summary-label">Employment Type</div>
-                <div class="summary-value">${
-                  formData.employmentType || "Not selected"
-                }</div>
+                <div class="summary-value">${formData.employmentType || "Not selected"
+      }</div>
             </div>`;
 
     // Employment details based on type
     if (formData.employmentType === "Salaried") {
       html += `<div class="summary-item">
                 <div class="summary-label">Monthly Income</div>
-                <div class="summary-value">₹ ${
-                  formData.netMonthlyIncome || "Not provided"
-                }</div>
+                <div class="summary-value">₹ ${formData.netMonthlyIncome || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Current Employer</div>
-                <div class="summary-value">${
-                  formData.currentEmployer || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.currentEmployer || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Work Experience</div>
-                <div class="summary-value">${
-                  formData.yearsOfExperience || "Not provided"
-                } years</div>
+                <div class="summary-value">${formData.yearsOfExperience || "Not provided"
+        } years</div>
             </div>`;
     } else if (formData.employmentType === "Self Employed Business") {
       html += `<div class="summary-item">
                 <div class="summary-label">Annual Turnover</div>
-                <div class="summary-value">₹ ${
-                  formData.annualTurnover || "Not provided"
-                }</div>
+                <div class="summary-value">₹ ${formData.annualTurnover || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Business Type</div>
-                <div class="summary-value">${
-                  formData.businessType || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.businessType || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Years in Business</div>
-                <div class="summary-value">${
-                  formData.yearsInBusiness || "Not provided"
-                } years</div>
+                <div class="summary-value">${formData.yearsInBusiness || "Not provided"
+        } years</div>
             </div>`;
     } else if (formData.employmentType === "Self Employed Professional") {
       html += `<div class="summary-item">
                 <div class="summary-label">Annual Receipts</div>
-                <div class="summary-value">₹ ${
-                  formData.annualReceipts || "Not provided"
-                }</div>
+                <div class="summary-value">₹ ${formData.annualReceipts || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Profession</div>
-                <div class="summary-value">${
-                  formData.profession || "Not provided"
-                }</div>
+                <div class="summary-value">${formData.profession || "Not provided"
+        }</div>
             </div>
             <div class="summary-item">
                 <div class="summary-label">Years of Practice</div>
-                <div class="summary-value">${
-                  formData.yearsOfPractice || "Not provided"
-                } years</div>
+                <div class="summary-value">${formData.yearsOfPractice || "Not provided"
+        } years</div>
             </div>`;
     }
 
@@ -812,23 +799,21 @@ document.addEventListener("DOMContentLoaded", function () {
       html += `
             <div class="loan-option-card">
                 ${option.tag ? `<div class="tag">${option.tag}</div>` : ""}
-                <img src="${option.logo}" alt="${
-        option.bank
-      } Logo" class="bank-logo">
+                <img src="${option.logo}" alt="${option.bank
+        } Logo" class="bank-logo">
                 <h4>${option.name}</h4>
                 <div class="rate">${option.rate}</div>
                 <div class="emi">Monthly EMI: ₹${emi.toLocaleString(
-                  "en-IN"
-                )}</div>
-                ${
-                  option.specialOffer
-                    ? `<div class="special-offer">✨ ${option.specialOffer}</div>`
-                    : ""
-                }
+          "en-IN"
+        )}</div>
+                ${option.specialOffer
+          ? `<div class="special-offer">✨ ${option.specialOffer}</div>`
+          : ""
+        }
                 <ul>
                     ${option.features
-                      .map((feature) => `<li>${feature}</li>`)
-                      .join("")}
+          .map((feature) => `<li>${feature}</li>`)
+          .join("")}
                 </ul>
                 <a href="#" class="btn btn-primary">Apply Now</a>
             </div>`;
