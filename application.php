@@ -9,6 +9,43 @@
     <link rel="stylesheet" href="css/form.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+        .popup-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 9999;
+        }
+
+        .popup-content {
+            background: white;
+            padding: 2rem;
+            max-width: 400px;
+            width: 90%;
+            border-radius: 10px;
+            text-align: center;
+            position: relative;
+            animation: slideFade 0.3s ease-in-out;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .hidden {
+            display: none !important;
+        }
+
+
         input.error,
         select.error {
             border: 1px solid #e53935;
@@ -336,7 +373,8 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="netMonthlyIncome">Net Monthly Income</label>
-                                                <input type="text" id="netMonthlyIncome" name="netMonthlyIncome" data-inr="true" placeholder="Enter monthly income">
+                                                <input type="text" id="netMonthlyIncome" name="netMonthlyIncome"
+                                                    data-inr="true" placeholder="Enter monthly income">
                                                 <div class="error-text"></div>
 
                                             </div>
@@ -375,7 +413,8 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="annualTurnover">Annual Turnover</label>
-                                                <input type="text" id="annualTurnover" name="annualTurnover" data-inr="true" placeholder="Enter annual turnover">
+                                                <input type="text" id="annualTurnover" name="annualTurnover"
+                                                    data-inr="true" placeholder="Enter annual turnover">
                                                 <div class="error-text"></div>
 
                                             </div>
@@ -414,7 +453,8 @@
                                         <div class="form-grid">
                                             <div class="form-group">
                                                 <label for="annualReceipts">Annual Receipts</label>
-                                                <input type="text" id="annualReceipts" name="annualReceipts" data-inr="true" placeholder="Enter annual receipts">
+                                                <input type="text" id="annualReceipts" name="annualReceipts"
+                                                    data-inr="true" placeholder="Enter annual receipts">
                                                 <div class="error-text"></div>
 
                                             </div>
@@ -626,11 +666,23 @@
                 </div>
             </div>
         </footer>
+
         <!-- jQuery CDN (latest version) -->
         <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
         <script src="js/validation.js"></script>
         <script src="js/form.js"></script>
         <script src="js/main.js"></script>
+
+
+        <div id="bajaj-popup" class="popup-overlay hidden">
+            <div class="popup-content">
+                <span class="close-btn" id="close-popup">&times;</span>
+                <h2>Thanks for choosing Bajaj Finserv 🎉</h2>
+                <p>Our representative will reach out to you shortly with your personalized offer details.</p>
+                <button class="btn btn-primary" id="popup-ok">Got it!</button>
+            </div>
+        </div>
+
     </body>
 
 </html>

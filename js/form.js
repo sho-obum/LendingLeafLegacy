@@ -2,6 +2,38 @@
 console.log("submitButton:", document.getElementById("submit-button"));
 
 document.addEventListener("DOMContentLoaded", function () {
+
+  // popup
+  // Bajaj Finserv card click handler
+  const bajajCard = document.querySelector(".bank-card.eligible[data-bank='Bajaj Finserv']");
+  const popup = document.getElementById("bajaj-popup");
+  const closePopup = document.getElementById("close-popup");
+  const okPopup = document.getElementById("popup-ok");
+
+  if (bajajCard && popup) {
+    bajajCard.addEventListener("click", () => {
+      popup.classList.remove("hidden");
+    });
+  }
+
+  if (closePopup) {
+    closePopup.addEventListener("click", () => {
+      popup.classList.add("hidden");
+    });
+  }
+
+  if (okPopup) {
+    okPopup.addEventListener("click", () => {
+      popup.classList.add("hidden");
+    });
+  }
+
+  window.addEventListener("click", function (e) {
+    if (e.target === popup) {
+      popup.classList.add("hidden");
+    }
+  });
+
   // Form state management
 
   let currentStep = 1;
